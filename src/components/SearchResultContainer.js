@@ -21,8 +21,10 @@ class SearchResultContainer extends Component {
       .catch(err => console.log(err));
   };
   filterUsers =(name) => {
+    let lowerName = name.toLowerCase();
      let filteredUsers = this.state.results.filter ((user)=>{
-        return user.name.first.include(name) || user.name.last.include(name) 
+      
+        return user.name.first.toLowerCase().includes(lowerName) || user.name.last.toLowerCase().includes(lowerName) 
      })
      this.setState({
        filteredResults:filteredUsers
@@ -43,6 +45,16 @@ class SearchResultContainer extends Component {
     this.filterUsers(this.state.search);
   };
 
+  handleSortByName = (event)=> {
+     event.preventDefault();
+     let sortedUsers = this.state.filteredResults.sort ((userOne, userTwo)=>{
+     return (userOne.name.last > userTwo.name.last)? 1:-1;
+     })
+     this.setState({
+       filteredResults:sortedUsers
+     })
+  }
+
   render() {
     return (
       <div>
@@ -50,6 +62,7 @@ class SearchResultContainer extends Component {
           search={this.state.search}
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
+          handleSortByName={this.handleSortByName}
         />
         <ResultList results={this.state.filteredResults} />
       </div>
