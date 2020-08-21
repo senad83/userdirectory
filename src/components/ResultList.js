@@ -6,7 +6,7 @@ function ResultList(props) {
       <thead>
         <tr>
           <th>Image</th>
-          <th>Name<i class="fa fa-angle-double-down" aria-hidden="true"></i></th>
+          <th>Name<i className="fa fa-angle-double-down" aria-hidden="true"></i></th>
           <th>Phone</th>
           <th>Email</th>
           <th>DOB</th>

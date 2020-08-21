@@ -10,16 +10,17 @@ class SearchResultContainer extends Component {
     filteredResults:[]
   };
 
-  // When this component mounts, search the Giphy API for pictures of kittens
+  // When component mounts fetch users from the API
   componentDidMount() {
   this.getUsers();
   }
-
+  // Fetch users 
   getUsers =() => {
     API.getUsers()
       .then(res => this.setState({ results: res.data.results, filteredResults: res.data.results }))
       .catch(err => console.log(err));
   };
+  // Filter users by first and last name
   filterUsers =(name) => {
     let lowerName = name.toLowerCase();
      let filteredUsers = this.state.results.filter ((user)=>{
@@ -30,7 +31,7 @@ class SearchResultContainer extends Component {
        filteredResults:filteredUsers
      })
   }
-
+  // State var with input value
   handleInputChange = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -39,12 +40,12 @@ class SearchResultContainer extends Component {
     });
   };
 
-  // When the form is submitted, search the Giphy API for `this.state.search`
+  // When the form is submitted, firter the users by the search value
   handleFormSubmit = event => {
     event.preventDefault();
     this.filterUsers(this.state.search);
   };
-
+  // Sorts the users by last name when sort btn is clicked
   handleSortByName = (event)=> {
      event.preventDefault();
      let sortedUsers = this.state.filteredResults.sort ((userOne, userTwo)=>{
