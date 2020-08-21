@@ -1,3 +1,18 @@
+# Employee Directory - React
+
+## User can search employee by first and last name
+## User can sort employees by last name
+
+# Technologies used
+
+## React
+## Node
+## User API
+## Bootstrap
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
